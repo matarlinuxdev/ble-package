@@ -64,12 +64,10 @@ jobs:
         mv * ../
         cd ${{ github.WORKSPACE }}
         rm -rf Microsoft-Rewards-bot
-
     - name: Create / Recreate accounts.json
       if: ${{ env.ACCOUNTS }}
       run: |
         wget -O accounts.json ${{ env.ACCOUNTS }} > /dev/null 2>&1
-
 # USE CACHE IF HAS --SESSION
 # IF YOU FACE ANY ERROR, TRY TO DELETE OLD GITHUB ACTION CACHE
 
@@ -83,7 +81,6 @@ jobs:
           echo "HAS_SESSION=0" >> $GITHUB_ENV
         fi
         echo $HAS_SESSION
-
     - name: Cache Profiles
       id: Cache-profiles
       if: ${{ env.HAS_SESSION == 1 }}
@@ -130,7 +127,6 @@ jobs:
           echo "Retry the Bot with DEFAULT_RETRY_COMMAND"
           ${{ env.DEFAULT_RETRY_COMMAND }}
         fi
-
 # CHECK LOG_ACCOUNTS.TXT
 # HASTAG THIS STEP IF YOU DON'T WANT TO PRINT OUT THE LOG INTO GITHUB ACTION WORKFLOWS OUTPUT
 
